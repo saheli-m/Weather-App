@@ -1,0 +1,13 @@
+.InfoBox {
+  text-align: center;
+}
+
+.cardContainer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cont {
+  background-color: beige;
+}
