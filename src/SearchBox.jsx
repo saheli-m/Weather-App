@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "./SearchBox.css";
@@ -7,12 +11,12 @@ export default function SearchBox({updateInfo}) {
   let [city, setCity] = useState("");
   let [error, setError] = useState(false);
 
-  const API_URL = "https://api.openweathermap.org/data/2.5/weather";
-  const API_KEY = "0d6462942553a901ae4a0f45ce5dd87b";
+  const url = process.env.API_URL;
+  const key = process.env.API_KEY;
 
   let getWeatherInfo = async() => {
     try {
-      let response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric`);
+      let response = await fetch(`${url}?q=${city}&appid=${key}&units=metric`);
       let jsonResponse = await response.json();
       let result = {
         city: jsonResponse.name,
